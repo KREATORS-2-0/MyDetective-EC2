@@ -26,9 +26,9 @@ io.on("connection", (socket) => {
     console.log("User disconnected");
   });
 
-  socket.on("message", (message) => {
-    console.log("Message received:", message.message, "from", message.sender);
-    socket.to(Rooms[socket.id]).emit("message", message);
+  socket.on("command", (command) => {
+    console.log("Command received:",command);
+    socket.to(Rooms[socket.id]).emit("command", command);
   });
 
   socket.on("passcode", (passcode) => {
